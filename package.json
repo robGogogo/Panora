@@ -1,0 +1,28 @@
+{
+  "name": "panora",
+  "version": "1.0.0",
+  "description": "Panorama carousel designer for social media",
+  "type": "module",
+  "main": "main.cjs",
+  "scripts": {
+    "web": "vite",
+    "dev": "concurrently -k \"vite\" \"wait-on http://localhost:5173 && electron . --dev\"",
+    "start": "vite build && electron .",
+    "dist": "vite build && electron-builder"
+  },
+  "dependencies": { "react": "^18.3.1", "react-dom": "^18.3.1" },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1", "concurrently": "^8.2.2", "electron": "^31.0.0",
+    "electron-builder": "^24.13.3", "vite": "^5.4.0", "wait-on": "^7.2.0"
+  },
+  "author": "RobGogogo <robc173322@gmail.com>",
+  "build": {
+    "appId": "app.panora.desktop",
+    "productName": "Panora",
+    "directories": { "output": "release", "buildResources": "build" },
+    "files": ["dist/**", "main.cjs", "preload.cjs"],
+    "win": { "target": "nsis" },
+    "mac": { "target": "dmg" },
+    "linux": { "target": "AppImage" }
+  }
+}
